@@ -1,0 +1,15 @@
+{
+  "name": "au-cmsinn",
+  "description": "Practical, simple and yet powerfull CMS solution for meteor projects",
+  "homepage": "https://github.com/SteelzZ/au-cmsinn",
+  "author": "Tomas Bartkus <to.bartkus@gmail.com> (http://codetemple.blogspot.com)",
+  "version": "0.0.1",
+  "git": "https://github.com/SteelzZ/au-cmsinn.git",
+  "packages": {
+    "iron-router" : "0.7.1",
+    "jquery-ui" : "1.9.2",
+    "bootstrap-3" : "3.1.1-1",
+    "x-editable-bootstrap3" : "1.5.2",
+    "fontawesome4": "1.0.0"
+  }
+}

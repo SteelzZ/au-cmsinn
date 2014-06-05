@@ -1,0 +1,118 @@
+.drager {
+  position: absolute;
+  z-index:99999;
+  width: auto;
+}
+
+.editable-wysihtml5 {
+  color:#000000;
+}
+
+#cmsinn-container {
+  position: relative;
+  width: auto;
+
+  /*z-index:99999;*/
+  opacity: .7;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+}
+
+#cmsinn-container:hover {
+  cursor: move;
+}
+
+#cmsinn-container > .row:hover {
+  -webkit-transform: scale(1.1) ;
+}
+
+#cmsinn-container > .row {
+  width:56px;
+}
+
+.scale-down {
+  -webkit-transform: scale(0.5);
+}
+
+.rotate-90 {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+.rotate90 {
+  margin: 15px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+
+.control {
+  padding: 0px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#trash {
+  position: absolute;
+  left:50%;
+  top:50%;
+  opacity: 0.8;
+}
+
+.empty-record{
+  height:30px;
+  width:30px;
+  z-index:9999;
+  display:inline;
+}
+
+.mark {
+  border: 1px dashed #4195fc;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.image-mark{
+    -webkit-transition: all 0.50s ease-in-out;
+    -moz-transition: all 0.50s ease-in-out;
+    -ms-transition: all 0.50s ease-in-out;
+    -o-transition: all 0.50s ease-in-out;
+    border: 1px dashed #4195fc;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.image-drag-enter{
+    -webkit-transition: all 0.50s ease-in-out;
+    -moz-transition: all 0.50s ease-in-out;
+    -ms-transition: all 0.50s ease-in-out;
+    -o-transition: all 0.50s ease-in-out;
+    border: 1px dashed #75FF69; /* some kind of blue border */
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.image-drag-leave{
+    -webkit-transition: all 0.50s ease-in-out;
+    -moz-transition: all 0.50s ease-in-out;
+    -ms-transition: all 0.50s ease-in-out;
+    -o-transition: all 0.50s ease-in-out;
+    border: 1px dashed #FF2929; /* some kind of blue border */
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
+
+.image-drag-drop{
+    -webkit-transition: all 0.50s ease-in-out;
+    -moz-transition: all 0.50s ease-in-out;
+    -ms-transition: all 0.50s ease-in-out;
+    -o-transition: all 0.50s ease-in-out;
+    border: 1px dashed #FF0000; /* some kind of blue border */
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+}
