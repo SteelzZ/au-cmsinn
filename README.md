@@ -6,6 +6,8 @@
 
 ## About
 
+## Documentation
+
 ## Installation (NOT PUBLISHED YET)
 
 This package can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
