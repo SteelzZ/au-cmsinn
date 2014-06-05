@@ -6,7 +6,7 @@
 
 ## About
 
-This is a CMS package for Meteor and it is bit different from other CMS systems. There is no so called "admin console", because everything is managed in frontend. Content editing, structure changes, languages, images, navigation everything is managed in a "What you see is what you can edit" kinda way. Main goal i am trying to achieve is to make it very intuitive, easy to use but at the same time powerful enough.
+This is a CMS package for Meteor. This CMS is a bit different then other, because there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough.
 
 ## Documentation
 
@@ -24,7 +24,7 @@ and add this package:
 $ mrt add au-ui-modern-business
 ```
 
-Now once you will run your project you will be presented with a "Controls block" through which you will be able to manage your website. 
+Now once you will run your project you will be presented with a "Controls block" through which you will be able to manage your website. Here you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts).
 
 ## Installation
 
