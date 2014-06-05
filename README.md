@@ -6,13 +6,20 @@
 
 ## About
 
-This is a CMS package for Meteor. This CMS is a bit different then other, because there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough.
+This is a CMS package for Meteor. This CMS is a bit different in a sense that there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough.
 
 ## Documentation - WORK IN PROGRESS
 
-Current documentation is in very early stages. I am working on it to make it as clear as possible so please be patient :).
+Current documentation is still very abstract but still, better than nothing. I am working on it to make it as clear as possible so please be patient :).
 
-#### Getting started
+**Table of Contents**
+
+- [Getting Started](#getting-started)
+- [Dependencies](#dependencies)
+- [Adding CMS control panel](#adding-cms-control-panel)
+- [Adding labels](#adding-labels)
+
+### Getting started
 
 To make it easy to start with I have created a sample project that uses this package.
 
@@ -26,9 +33,9 @@ and add this package:
 $ mrt add au-ui-modern-business
 ```
 
-Now once you will run your project you will be presented with a "Controls block" through which you will be able to manage your website. Here you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts).
+And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts). 
 
-#### Dependencies
+### Dependencies
 
 For image handling this package uses [gm](https://github.com/aheckmann/gm) package. So first download and install GraphicsMagick or ImageMagick. In Mac OS X, you can simply use Homebrew and do:
 
@@ -37,9 +44,9 @@ brew install imagemagick
 brew install graphicsmagick
 ```
 
-#### Adding CMS control panel
+### Adding CMS control panel
 
-First thing you need to do is to add "controls" block in your layout. So in your layout template add this:
+First thing you need to do is to add "controls block" in your layout. To do that in your layout template add this:
 ```html
 <template name="layout">
     {{> cmsinn_controls_left}}
@@ -47,9 +54,9 @@ First thing you need to do is to add "controls" block in your layout. So in your
 </template>
 ```
 
-That is it. This will bring on controls panel.
+This will bring on controls panel. You can wrap this in `if` statement to check if user is logged in and show it only then.
 
-#### Adding labels
+### Adding labels
 
 In general labels makes your content editable. Package handles which translation to load. All you have to do is to define in your template what kind of label is it. We are using [x-editable](http://vitalets.github.io/x-editable/docs.html) so for available types you can check in their docs.
 
