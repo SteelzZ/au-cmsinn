@@ -187,7 +187,7 @@ To make items sortable you have to add *data-au-sortable* attribute with value `
 
 You have to use `{{sorted}}` helper in order get items in correct order. If you will ignore this helper you will get items in wrong order. *children* param tells which records has to be fetched, param `{{_id}}` is parent record id which is used while building filters and for paging. Last param lets you define how many records you want to display here. For example in one page you will want to have all items displayed so you will just ignore last param, but in other page if you need to display just a subset of items, pass number of items you want to be visible there.
 
-To make item deletable add *data-au-deletable* attribute and pass record is as value.
+To make item deletable add *data-au-deletable* attribute and pass record id as value.
 
 ```html
 <ul class="nav navbar-nav navbar-right" data-au-record="top_menu">
