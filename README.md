@@ -115,7 +115,7 @@ To add navigation on selected element use *data-au-nav* attribute and give it un
 </template>
 ```
 
-This attribute will bring up navigation UI once navigation mode will be turned on. Over UI you will select template which should be used and will have to add url. Under the hood this will translate to:
+This attribute will bring up navigation UI once navigation mode will be turned on. Over UI you will select template which should be used and also you will have to add url. Under the hood this will translate to:
 ```javascript
 Router.route('unique_route_name', {
     path : '/your-added-url',
