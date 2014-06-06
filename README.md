@@ -2,7 +2,7 @@
 
 ## History
 
-###### 0.0.1 - In Development, unstable
+###### 0.0.3 - In Development, unstable
 
 ## About
 
