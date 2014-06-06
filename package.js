@@ -9,7 +9,7 @@ Npm.depends({
 Package.on_use(function (api, where) {
     api.imply(['iron-router']);
 
-    api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating', 'fontawesome4'], ['client', 'server']);
+    api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating'], ['client', 'server']);
     api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap3'], ['client']);
 
     //api.add_files('lib/3rd/fonts/FontAwesome.otf', ['client']);
