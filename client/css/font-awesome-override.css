@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0');
+  src: url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?#iefix&v=4.1.0') format('embedded-opentype'), url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+}

@@ -12,12 +12,11 @@ Package.on_use(function (api, where) {
     api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating', 'fontawesome4'], ['client', 'server']);
     api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap3'], ['client']);
 
+    //api.add_files('lib/3rd/fonts/FontAwesome.otf', ['client']);
+
     api.add_files('lib/3rd/font-awesome.min.css', ['client']);
-    api.add_files('lib/3rd/fonts/fontawesome-webfont.eot', ['client']);
-    api.add_files('lib/3rd/fonts/fontawesome-webfont.svg', ['client']);
-    api.add_files('lib/3rd/fonts/fontawesome-webfont.ttf', ['client']);
-    api.add_files('lib/3rd/fonts/fontawesome-webfont.woff', ['client']);
-    api.add_files('lib/3rd/fonts/FontAwesome.otf', ['client']);
+    api.add_files('client/css/font-awesome-override.css', ['client']);
+
     api.add_files('assets/trash-icon.png', ['client']);
 
 
