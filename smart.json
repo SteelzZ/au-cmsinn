@@ -9,6 +9,6 @@
     "iron-router" : "0.7.1",
     "jquery-ui" : "1.9.2",
     "bootstrap-3" : "3.1.1-1",
-    "x-editable-bootstrap3" : "1.5.2"
+    "x-editable-bootstrap" : "1.5.1"
   }
 }

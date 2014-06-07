@@ -44,40 +44,6 @@ var scroller = function(){
     }
 };
 
-
-// var scroller = function(){
-//     var elementHeight = $('#cmsinn-container').height();
-//     if($('#cmsinn-container').hasClass('rotate-90')){
-//         elementHeight = $('#cmsinn-container').width();
-//     }
-
-//     var elementsBottom = elementHeight + $('#cmsinn-container').position().top;
-//     var bottomOfScreen = $(window).scrollTop() + $(window).height();
-
-//     if($(window).height() < $('#cmsinn-container').height()){
-//         rotate();
-//     } else {
-//         rotate('back');
-//     }
-
-//     console.log(elementHeight + "---" + elementsBottom + "--" + bottomOfScreen + "--" + $(window).scrollTop() + "---" + $(document).height() + "--" + $(window).height() + "--" + $('#cmsinn-container').position().top + "---" + $('.drager').offset().top);
-//     if($(window).scrollTop() > $('#cmsinn-container').position().top){
-//         var top = $(window).scrollTop();
-//         if($('#cmsinn-container').hasClass('rotate-90')){
-//             top = top - (Math.floor($('#cmsinn-container').height() / 2.2));
-//         }
-//         $('#cmsinn-container').css({top:top+'px'});
-//     }
-
-//     if(elementsBottom > bottomOfScreen){
-//         var top = bottomOfScreen - elementHeight;
-//         if($('#cmsinn-container').hasClass('rotate-90')){
-//             top = bottomOfScreen - (Math.floor($('#cmsinn-container').height() / 2));
-//         }
-//         $('#cmsinn-container').css({top:top+'px'});
-//     }
-// };
-
 var controls = function(){
     //$('#cmsinn-container').sticky({});
     $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});
