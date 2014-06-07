@@ -10,7 +10,7 @@ Package.on_use(function (api, where) {
     api.imply(['iron-router']);
 
     api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating'], ['client', 'server']);
-    api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap3'], ['client']);
+    api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap'], ['client']);
 
     api.add_files('lib/3rd/font-awesome.min.css', ['client']);
     api.add_files('client/css/font-awesome-override.css', ['client']);
