@@ -48,29 +48,29 @@ var controls = function(){
     //$('#cmsinn-container').sticky({});
     $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});
 
-    $('#translations').on('click', function(event){
+    $('#cmsinn_translations').on('click', function(event){
         CmsInn.toggle('i18n');
     });
-    $('#navigation').on('click', function(event){
+    $('#cmsinn_navigation').on('click', function(event){
         CmsInn.toggle('navigation');
     });
-    $('#structure').on('click', function(event){
+    $('#cmsinn_structure').on('click', function(event){
         CmsInn.toggle('record');
     });
-    $('#image').on('click', function(event){
+    $('#cmsinn_image').on('click', function(event){
         CmsInn.toggle('image');
     });
-    $('#locale').on('click', function(event){
+    $('#cmsinn_locale').on('click', function(event){
         CmsInn.toggle('locale');
     });
-    $('#sortable').on('click', function(event){
+    $('#cmsinn_sortable').on('click', function(event){
         CmsInn.toggle('sortable');
     });
-    $('#deletable').on('click', function(event){
+    $('#cmsinn_deletable').on('click', function(event){
         CmsInn.toggle('deletable');
     });
 
-    $('#disable').on('click', function(event){
+    $('#cmsinn_disable').on('click', function(event){
         CmsInn.disable();
     });
     $(window).scroll(scroller)
