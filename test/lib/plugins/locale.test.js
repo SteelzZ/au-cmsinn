@@ -1,50 +1,45 @@
-if(Meteor.isServer){
-    // Meteor.methods({
-    //     'locale-plugin-test/cleanup' : function(){
-    //         ContentCollection.remove({});
-    //         ContentCollection.insert({
-    //             _id: 'locale',
-    //             contentType: 'locale',
-    //             locale : 'en_US'
-    //         });
-    //     }
-    // });
-}
-
 if(Meteor.isClient){
-    // Clean up before test in case test fails 
-    // testAsyncMulti('Locale - Test if on client operations on currency service only allowed for logged in users', [
-    //     function (test, expect) {
-    //         Meteor.call('locale-plugin-test/cleanup');
-    //     },
-    //     function(test, expect){
-    //         var locale = CmsInnLocale.get('locale');
-            
-    //         var currencyService = new CurrencyService();
-    //         currencyService.add("EUR", "Euro", true, expect(function(err, doc){
-    //             test.instanceOf(err, Meteor.Error);
-    //             test.equal(err.error, 403);
-    //         }));
-    //     },
-    //     function (test, expect) {
-    //         Meteor.call('currency-service-test/cleanup');
-    //     },
-    //     function (test, expect) {
-    //         var username = Random.id();
-    //         var password = 'password';
+    Tinytest.add('CmsInnLocale - Test if plugin is being init correctly', function (test) {
+        var settings = {}
 
-    //         Accounts.callLoginMethod({
-    //             methodName: 'createUser',
-    //             methodArguments: [{username: username, password: password}]
-    //         });
-    //     },
-    //     function(test, expect){
-    //         var currencyService = new CurrencyService();
-    //         var id = currencyService.add("LTL", "Litas", true);
-    //         test.equal("LTL", id);
-    //     },
-    //     function (test, expect) {
-    //         Meteor.call('currency-service-test/cleanup');
-    //     }
-    // ]);
+        var $element = $('<a data-au-locale="id_goes_here"></a>');
+        $element.cmsInnLocale(settings);
+
+        var pluginWrapper = $element.data('cmsInnLocale');
+        test.isNotNull(pluginWrapper);
+
+        test.isTrue(pluginWrapper.$element.hasClass('mark'));
+    });
+
+    Tinytest.add('CmsInnLocale - Test if UI <render> method is called on mouseover', function (test) {
+        var settings = {
+            ui : {
+                storage : null,
+                element : null,
+                currentLocale : null,
+                init: sinon.spy(),
+                closeWindow : sinon.spy(),
+                bindLanguage: sinon.spy(),
+                destroy : sinon.spy(),
+                buildOptions: sinon.spy(),
+                render : sinon.spy(),
+            }
+        }
+
+        var $element = $('<a data-au-locale="id_goes_here"></a>');
+        $element.cmsInnLocale(settings);
+
+        var pluginWrapper = $element.data('cmsInnLocale');
+        pluginWrapper.$element.trigger('mouseover');
+        test.equal(pluginWrapper.ui.render.callCount, 1);
+    });
+
+    Tinytest.add('CmsInnLocale - Test if update method is called on storage adapter', function (test) {
+        CmsInnLocale.storage.update = sinon.spy();
+        CmsInnLocale.storage.collection.findOne = sinon.stub();
+        CmsInnLocale.storage.collection.findOne.withArgs({_id:'imageId'}).returns(true);
+        CmsInnLocale.bindLanguage('en_US', 'imageId');
+
+        test.equal(CmsInnLocale.storage.update.callCount, 1);
+    });
 }
