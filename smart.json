@@ -6,9 +6,11 @@
   "version": "0.0.5",
   "git": "https://github.com/SteelzZ/au-cmsinn.git",
   "packages": {
-    "iron-router" : "0.7.1",
-    "jquery-ui" : "1.9.2",
-    "bootstrap-3" : "3.1.1-1",
-    "x-editable-bootstrap" : "1.5.1"
+    "iron-router" : {},
+    "jquery-ui" : {},
+    "bootstrap-3" : {},
+    "x-editable-bootstrap" : {},
+    "roles" : {},
+    "mocha-web-sinon" : {}
   }
 }
