@@ -46,14 +46,14 @@ Package.on_use(function (api, where) {
 
     api.add_files('lib/service.js', ['client', 'server']);
 
-    api.add_files('server/init.js', ['server']);
-    api.add_files('server/methods.js', ['server']);
-
     api.export('CmsInn');
     api.export('Utilities', ['client', 'server'], {testOnly: true});
     api.export('CmsInnSortable', ['client', 'server'], {testOnly: true});
     api.export('CmsInnRecord', ['client', 'server'], {testOnly: true});
     api.export('CmsInnNavigation', ['client', 'server'], {testOnly: true});
+    api.export('CmsInnLocale', ['client', 'server'], {testOnly: true});
+    api.export('CmsInni18n', ['client', 'server'], {testOnly: true});
+    api.export('CmsInnImage', ['client', 'server'], {testOnly: true});
 });
 
 Package.on_test(function (api) {
@@ -72,5 +72,7 @@ Package.on_test(function (api) {
     api.add_files('test/lib/plugins/sortable.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/record.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/navigation.test.js', ['client', 'server']);
-    // api.add_files('test/lib/plugins/locale.test.js', ['client', 'server']);
+    api.add_files('test/lib/plugins/locale.test.js', ['client', 'server']);
+    api.add_files('test/lib/plugins/i18n.test.js', ['client', 'server']);
+    api.add_files('test/lib/plugins/image.test.js', ['client', 'server']);
 });
