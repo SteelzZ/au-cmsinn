@@ -66,10 +66,13 @@ if(Meteor.isClient){
     });
 
     Tinytest.add('CmsInnImage - Test if image with correct size is returned if size does exists, called on self-contained id', function (test) {
+        CmsInn.configure();
         CmsInnImage.storage.collection.findOne = sinon.stub();
         CmsInnImage.storage.collection.findOne.returns({
-            sizes : {
-                '100x100' : 'img'
+            get : function(){
+                return {
+                    '100x100' : 'img'
+                }
             }
         });
         var result = CmsInnImage.getSized('imageId', '100x100');
@@ -78,13 +81,22 @@ if(Meteor.isClient){
     });
 
     Tinytest.add('CmsInnImage - Test if image with correct size is returned if size does exists, called on record id', function (test) {
+        CmsInn.configure();
+
+        var callback = function(name){
+            if(name == 'field'){
+                return callback;
+            } 
+            if(name == 'sizes'){
+                return {
+                    '100x100' : 'img'
+                };
+            }     
+        };
+
         CmsInnImage.storage.collection.findOne = sinon.stub();
         CmsInnImage.storage.collection.findOne.returns({
-            'field': {
-                sizes : {
-                    '100x100' : 'img'
-                }
-            }
+            get : callback
         });
         var result = CmsInnImage.getSized('imageId[field]', '100x100');
 
@@ -92,14 +104,22 @@ if(Meteor.isClient){
     });
 
     Tinytest.add('CmsInnImage - Test if server method to resize image is called if img with requested size does not exists, record id', function (test) {
+        CmsInn.configure();
         Meteor.apply = sinon.spy();
+        var callback = function(name){
+            if(name == 'field'){
+                return callback;
+            } 
+            if(name == 'sizes'){
+                return {
+                    '10x10' : 'img'
+                };
+            }     
+        };
+
         CmsInnImage.storage.collection.findOne = sinon.stub();
         CmsInnImage.storage.collection.findOne.returns({
-            'field': {
-                sizes : {
-                    '10x10' : 'img'
-                }
-            }
+            get : callback
         });
         var result = CmsInnImage.getSized('imageId[field]', '100x100');
 
@@ -107,11 +127,14 @@ if(Meteor.isClient){
     });
 
     Tinytest.add('CmsInnImage - Test if server method to resize image is called if img with requested size does not exists, self-contained id', function (test) {
+        CmsInn.configure();
         Meteor.apply = sinon.spy();
         CmsInnImage.storage.collection.findOne = sinon.stub();
         CmsInnImage.storage.collection.findOne.returns({
-            sizes : {
-                '10x10' : 'img'
+            get : function(){
+                return {
+                    '10x10' : 'img'
+                }
             }
         });
         var result = CmsInnImage.getSized('imageId', '100x100');

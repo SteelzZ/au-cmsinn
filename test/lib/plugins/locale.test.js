@@ -35,6 +35,7 @@ if(Meteor.isClient){
     });
 
     Tinytest.add('CmsInnLocale - Test if update method is called on storage adapter', function (test) {
+        CmsInn.configure({});
         CmsInnLocale.storage.update = sinon.spy();
         CmsInnLocale.storage.collection.findOne = sinon.stub();
         CmsInnLocale.storage.collection.findOne.withArgs({_id:'imageId'}).returns(true);
