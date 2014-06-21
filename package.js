@@ -8,8 +8,9 @@ Npm.depends({
 
 Package.on_use(function (api, where) {
     api.imply(['iron-router']);
+    api.imply(['roles']);
 
-    api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating'], ['client', 'server']);
+    api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating', 'roles'], ['client', 'server']);
     api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
@@ -41,6 +42,7 @@ Package.on_use(function (api, where) {
     api.add_files('lib/plugins/sortable.js', ['client', 'server']);
     api.add_files('lib/plugins/deletable.js', ['client', 'server']);
     api.add_files('lib/plugins/navigation.js', ['client', 'server']);
+    api.add_files('lib/plugins/versioning.js', ['client', 'server']);
 
     api.add_files('lib/models/content.js', ['client', 'server']);
 

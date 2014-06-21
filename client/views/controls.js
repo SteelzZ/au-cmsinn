@@ -69,7 +69,9 @@ var controls = function(){
     $('#cmsinn_deletable').on('click', function(event){
         CmsInn.toggle('deletable');
     });
-
+    $('#cmsinn_versioning').on('click', function(event){
+        CmsInn.toggle('versioning', true);
+    });
     $('#cmsinn_disable').on('click', function(event){
         CmsInn.disable();
     });

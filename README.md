@@ -6,7 +6,7 @@
 
 ## About
 
-This is a CMS package for Meteor. This CMS is a bit different in a sense that there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough.
+This is a CMS package for Meteor. This CMS is a bit different in a sense that there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough. 
 
 ## Installation
 
@@ -23,6 +23,7 @@ Current documentation is still very abstract but still, better than nothing. I a
 **Table of Contents**
 
  - [Getting Started](#getting-started)
+ - [Overview](#overview)
  - [Dependencies](#dependencies)
  - [Adding CMS control panel](#adding-cms-control-panel)
  - [Adding labels](#adding-labels)
@@ -31,6 +32,7 @@ Current documentation is still very abstract but still, better than nothing. I a
  - [Adding record](#adding-records)
  - [Adding sortables and deletables](#adding-sortables-and-deletables)
  - [Adding languages](#adding-languages)
+ - [How to create plugins](#how-to-create-plugins)
 
 
 ### Getting started
@@ -48,6 +50,12 @@ $ mrt add au-ui-modern-business
 ```
 
 And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts). 
+
+### Overview
+
+Functionality in this package is built through the plugins. Each plugin serves on single purpose like handles images, translations, records, sorting etc. If you need to extend package for your needs you should be doing it by creating new plugin and registering it within CmsInn object. Plugins does interact with each other and uses API exposed by plugin.
+
+If you do install only this package and not one of already created UI packages you will have to integrate it within your templates by yourself. See documentation below on how each plugin works and how to use them.
 
 ### Dependencies
 
@@ -74,7 +82,7 @@ This will bring on controls panel. You can wrap this in `if` statement to check 
 
 In general labels makes your content editable. Package handles which translation to load and all you have to do is to define in your template what kind of label is it. 
 
-To make content editable in your templates on selected elements add *data-au-label* attribute and give it a unique name/id. Then use `{{c}}` helper to fetch its value, like this:
+To make content editable in your templates, on selected elements add *data-au-label* attribute and give it a unique name/id. Then use `{{c}}` helper to fetch its value, like this:
 ```html
 <template name="layout">
     <div class="navbar-header">
@@ -251,3 +259,5 @@ Here is an example of language menu:
 ```
 
 *data-au-locale* attribute is special in a way that to that element cms binds a function that once you click it, it will set language. `{{id}}` that you pass to this attribute is used to fetch what language user has assigned to it, set it and reload translations.
+
+### How to create plugins
