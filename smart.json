@@ -3,7 +3,7 @@
   "description": "Practical, simple and yet powerfull CMS solution for meteor projects",
   "homepage": "https://github.com/SteelzZ/au-cmsinn",
   "author": "Tomas Bartkus <to.bartkus@gmail.com> (http://codetemple.blogspot.com)",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "git": "https://github.com/SteelzZ/au-cmsinn.git",
   "packages": {
     "iron-router" : {},
