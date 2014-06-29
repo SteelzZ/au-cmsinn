@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CmsInn by SteelzZ</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>CmsInn</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/SteelzZ/au-cmsinn">View the Project on GitHub <small>SteelzZ/au-cmsinn</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/SteelzZ/au-cmsinn/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/SteelzZ/au-cmsinn/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/SteelzZ/au-cmsinn">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="awareunit---cms-" class="anchor" href="#awareunit---cms-"><span class="octicon octicon-link"></span></a>AwareUnit - CMS <a href="https://travis-ci.org/SteelzZ/au-cmsinn"><img src="https://travis-ci.org/SteelzZ/au-cmsinn.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<h2>
+<a name="history" class="anchor" href="#history"><span class="octicon octicon-link"></span></a>History</h2>
+
+<h6>
+<a name="006---in-development-unstable" class="anchor" href="#006---in-development-unstable"><span class="octicon octicon-link"></span></a>0.0.6 - In Development, unstable</h6>
+
+<h2>
+<a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>This is a CMS package for Meteor. This CMS is a bit different in a sense that there is no so called "admin console" and everything is managed in frontend. Content editing, structure changes, languages, images, navigation is managed in a "what you see is what you can edit" kinda way. Main goal i am trying to achieve with this package is to make it intuitive, easy to use but at the same time powerful enough. </p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>This package can be installed with <a href="https://github.com/oortcloud/meteorite/">Meteorite</a>. From inside a Meteorite-managed app:</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt add au-cmsinn
+</pre></div>
+
+<h2>
+<a name="documentation---work-in-progress" class="anchor" href="#documentation---work-in-progress"><span class="octicon octicon-link"></span></a>Documentation - WORK IN PROGRESS</h2>
+
+<p>Current documentation is still very abstract but still, better than nothing. I am working on it to make it as clear as possible so please be patient :).</p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#adding-cms-control-panel">Adding CMS control panel</a></li>
+<li><a href="#adding-labels">Adding labels</a></li>
+<li><a href="#adding-navigation">Adding navigation</a></li>
+<li><a href="#adding-images">Adding images</a></li>
+<li><a href="#adding-records">Adding record</a></li>
+<li><a href="#adding-sortables-and-deletables">Adding sortables and deletables</a></li>
+<li><a href="#adding-languages">Adding languages</a></li>
+<li><a href="#how-to-create-plugins">How to create plugins</a></li>
+</ul><h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h3>
+
+<p>To make it easy to start with I have created a sample project that uses this package.</p>
+
+<p>Just create new meteor project:</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt create my-cms-project
+</pre></div>
+
+<p>and add this package:</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt add au-ui-modern-business
+</pre></div>
+
+<p>And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works <a href="http://youtu.be/mJ83sGD33ts">au-cmsinn intro</a>. </p>
+
+<h3>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>Functionality in this package is built through the plugins. Each plugin serves on single purpose like handles images, translations, records, sorting etc. If you need to extend package for your needs you should be doing it by creating new plugin and registering it within CmsInn object. Plugins does interact with each other and uses API exposed by plugin.</p>
+
+<p>If you do install only this package and not one of already created UI packages you will have to integrate it within your templates by yourself. See documentation below on how each plugin works and how to use them.</p>
+
+<h3>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<p>For image handling this package uses <a href="https://github.com/aheckmann/gm">gm</a> package. So first download and install GraphicsMagick or ImageMagick. In Mac OS X, you can simply use Homebrew and do:</p>
+
+<div class="highlight highlight-sh"><pre>brew install imagemagick
+brew install graphicsmagick
+</pre></div>
+
+<h3>
+<a name="adding-cms-control-panel" class="anchor" href="#adding-cms-control-panel"><span class="octicon octicon-link"></span></a>Adding CMS control panel</h3>
+
+<p>First thing you need to do is to add "controls block" in your layout. To do that in your layout template add this:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"layout"</span><span class="nt">&gt;</span>
+    {{&gt; cmsinn_controls_left}}
+    ...
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+
+<p>This will bring on controls panel. You can wrap this in <code>if</code> statement to check if user is logged in and show it only then.</p>
+
+<h3>
+<a name="adding-labels" class="anchor" href="#adding-labels"><span class="octicon octicon-link"></span></a>Adding labels</h3>
+
+<p>In general labels makes your content editable. Package handles which translation to load and all you have to do is to define in your template what kind of label is it. </p>
+
+<p>To make content editable in your templates, on selected elements add <em>data-au-label</em> attribute and give it a unique name/id. Then use <code>{{c}}</code> helper to fetch its value, like this:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"layout"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-au-label=</span><span class="s">"brand"</span><span class="nt">&gt;</span>{{c 'brand'}}<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+
+<p>As we are using <a href="http://vitalets.github.io/x-editable/docs.html">x-editable</a> so you can say what type of UI you want to bring up for user by adding <em>data-type</em> attribute. So far tested types are these:</p>
+
+<ul>
+<li>text</li>
+<li>textarea</li>
+<li>date</li>
+<li>wysihtml5</li>
+</ul><p>So if you need to use <em>wysihtml5</em> type, then in template it would look like this:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"layout"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-type=</span><span class="s">"wysihtml5"</span> <span class="na">data-au-label=</span><span class="s">"brand"</span><span class="nt">&gt;</span>{{{c 'brand'}}}<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+
+<p>Note that to output <em>wysihtml5</em> value you have to use <code>{{{c 'label_name'}}}</code> triple brackets as this wont escape value of label.</p>
+
+<p>And that is it. Once you will load template and will turn on translations mode you will be able to edit content in all your added languages.</p>
+
+<h3>
+<a name="adding-navigation" class="anchor" href="#adding-navigation"><span class="octicon octicon-link"></span></a>Adding navigation</h3>
+
+<p>To add navigation on selected element use <em>data-au-nav</em> attribute and give it unique name:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"layout"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand {{nav 'brand' 'isActive'}}"</span> <span class="na">href=</span><span class="s">"{{nav 'brand' 'href'}}"</span> <span class="na">data-au-nav=</span><span class="s">"brand"</span> <span class="na">data-au-label=</span><span class="s">"brand"</span><span class="nt">&gt;</span>{{c 'brand'}}<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+
+<p>This attribute will bring up navigation UI once navigation mode will be turned on. Over UI you will select template which should be used and also you will have to add url. Under the hood this will translate to:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Router</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="s1">'unique_route_name'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">path</span> <span class="o">:</span> <span class="s1">'/your-added-url'</span><span class="p">,</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="err">'</span><span class="nx">your</span><span class="o">-</span><span class="nx">selected</span><span class="o">-</span><span class="nx">template</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Use <code>{{nav}}</code> helper to get uri and check "isActive" state. For example <code>href="{{nav 'brand' 'href'}}"</code> this will fetch entered uri for id <code>'brand'</code> and <code>href="{{nav 'brand' 'isActive'}}"</code> will return string 'active' if current route will match with <code>'brand'</code> uri.</p>
+
+<p>As you see above, you can combine attributes on one element. For example same element can have navigation and label attributes. Depending on what mode you will turn on corresponding UI will be presented.</p>
+
+<h3>
+<a name="adding-images" class="anchor" href="#adding-images"><span class="octicon octicon-link"></span></a>Adding images</h3>
+
+<p>To make editable images add <em>data-au-image</em> attribute and use <code>{{loadImg}}</code> helper to fetch content.
+For example:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">data-au-image=</span><span class="s">"{{path}}image_name"</span> <span class="na">class=</span><span class="s">"img-responsive"</span> <span class="na">src=</span><span class="s">"{{loadImg 'image_name' '750x450' path}}"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+<p>This will allow you to drag an drop image on this element. Defined size in <code>{{loadImg}}</code> helper will automatically resize image. So if you need to change size, just change it in template and everything else will be handled.
+Every page has <code>{{path}}</code> variable passed in by au-cmsinn package. This variable is uri of page you are in. By adding it in front of name you will make this name unique, so in different pages you can have same image name <code>my-image</code> but with <code>{{path}}</code> you will namespace it.</p>
+
+<h3>
+<a name="adding-records" class="anchor" href="#adding-records"><span class="octicon octicon-link"></span></a>Adding records</h3>
+
+<p>Records are the most complex bit in this project. Record is something that builds up your dynamic content. Your blog posts, portfolio items, team memebers, languages anything that you want to allow create over CMS has to be done through <em>data-au-record</em> attribute. This attribute will bring UI which will allow user to create new record, create sub record for your selected record or select record that user wants to display in specific place on page.</p>
+
+<p>For example below is top menu block. </p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span> <span class="na">data-au-record=</span><span class="s">"{{path}}top_menu"</span><span class="nt">&gt;</span>
+{{#with recordByPlace path 'top_menu'}}
+    {{#each sorted children _id}}
+        {{#with this}}
+            {{#if children}}
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span><span class="nt">&gt;&lt;span</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/span&gt;&lt;strong</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/strong&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">data-au-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+                        {{#each sorted children _id}}
+                            {{#with this}}
+                                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                            {{/with}}
+                        {{/each}}    
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            {{else}}
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"{{nav _id 'isActive'}}"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c 'title' _id}}<span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            {{/if}}
+        {{/with}}
+    {{/each}}
+{{/with}}
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+<p><em>data-au-record</em> attribute value is a placeholder id of this block. This value identifies this area/place in given page <code>{{path}}</code>. So when you create new record that record will be associated with this placeholder id. When you select some record to be displayed here, that record get this placeholder id. So any record can be displayed in multiple places, but placeholder ids has to be unique. To make sure those are unique we namespace them with <code>{{path}}</code>.</p>
+
+<p><code>{{recordByPlace}}</code> helper fetches record and then inside <code>{{with}}</code> helper you got all data associated with it. But how you know what data/fields it has? Well in template you define it.
+In example above we are creating menu items and every item has <code>[title]</code> field. When you are defining <em>data-au-label</em> inside record you have to use a little magic while giving a name to label, like this - <code>data-au-label="{{_id}}[field_name]"</code>. This will tell cms to store value of this field inside created record. Because when you create global label it is created as separate record in database, but by naming it in given structure it will create <code>field_name</code> inside record with id <code>{{_id}}</code>. Languages are also handled. So once you will be translating it, this field will have different values for each language.</p>
+
+<p>Another thing to note is that if in template you wont render second level of menu so obviously it wont be visible. But you can have any depth in your structures and then its up to you to decide how many levels you will be displaying. Perhaps in top menu you will display 2 levels but in bottom menu you just want to show first level items, so you will render only first level and will ignore second level.</p>
+
+<h3>
+<a name="adding-sortables-and-deletables" class="anchor" href="#adding-sortables-and-deletables"><span class="octicon octicon-link"></span></a>Adding sortables and deletables</h3>
+
+<p>To make items sortable you have to add <em>data-au-sortable</em> attribute with value <code>true</code> on parent element of items you want to be able to sort. Then you can "checrry pick" items that you want to be sortable by adding attribute <em>data-au-sort-order</em>. Child elements of element that has <em>data-au-record</em> attribute by default are made sortable, so you need to add <em>data-au-sortable</em> only to sub elements, like in example below. <em>data-au-sort-order</em> attribute has to have unique id value, those are used to identify record and update it's sort order in database.</p>
+
+<p>You have to use <code>{{sorted}}</code> helper in order get items in correct order. If you will ignore this helper you will get items in wrong order. <em>children</em> param tells which records has to be fetched, param <code>{{_id}}</code> is parent record id which is used while building filters and for paging. Last param lets you define how many records you want to display here. For example in one page you will want to have all items displayed so you will just ignore last param, but in other page if you need to display just a subset of items, pass number of items you want to be visible there.</p>
+
+<p>To make item deletable add <em>data-au-deletable</em> attribute and pass record id as value.</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span> <span class="na">data-au-record=</span><span class="s">"top_menu"</span><span class="nt">&gt;</span>
+{{#with recordByPlace '' 'top_menu'}}
+    {{#each sorted children _id 10}}
+        {{#with this}}
+            {{#if children}}
+                <span class="nt">&lt;li</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span><span class="nt">&gt;&lt;span</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/span&gt;&lt;strong</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/strong&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">data-au-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+                        {{#each sorted children _id}}
+                            {{#with this}}
+                                <span class="nt">&lt;li</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span><span class="nt">&gt;&lt;a</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                            {{/with}}
+                        {{/each}}    
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            {{else}}
+                <span class="nt">&lt;li</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">class=</span><span class="s">"{{nav _id 'isActive'}}"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c 'title' _id}}<span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            {{/if}}
+        {{/with}}
+    {{/each}}
+{{/with}}
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+<p>Again you can combine all attributes on one element.</p>
+
+<h3>
+<a name="adding-languages" class="anchor" href="#adding-languages"><span class="octicon octicon-link"></span></a>Adding languages</h3>
+
+<p>To add languages you need to add <em>data-au-locale</em> attribute on element. This will bring UI on selected elements and you will be able to select what locale should be loaded once that element is clicked. 
+Here is an example of language menu:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span> <span class="na">data-au-record=</span><span class="s">"languages"</span><span class="nt">&gt;</span>
+{{#with recordByPlace '' 'languages'}}
+    {{#each sorted children _id}}
+        {{#with this}}
+            {{#if children}}
+                <span class="nt">&lt;li</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span><span class="nt">&gt;&lt;span</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/span&gt;&lt;strong</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/strong&gt;&lt;/a&gt;</span>
+                    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">data-au-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+                        {{#each sorted children _id}}
+                            {{#with this}}
+                                <span class="nt">&lt;li</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span><span class="nt">&gt;&lt;a</span> <span class="na">data-au-locale=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c '[title]' _id}}<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                            {{/with}}
+                        {{/each}}    
+                    <span class="nt">&lt;/ul&gt;</span>
+                <span class="nt">&lt;/li&gt;</span> 
+            {{else}}
+                <span class="nt">&lt;li</span> <span class="na">data-au-sort-order=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-deletable=</span><span class="s">"{{_id}}"</span> <span class="na">class=</span><span class="s">"{{nav _id 'isActive'}}"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">data-au-locale=</span><span class="s">"{{_id}}"</span> <span class="na">data-au-nav=</span><span class="s">"{{_id}}"</span> <span class="na">href=</span><span class="s">"{{nav _id 'href'}}"</span> <span class="na">data-au-label=</span><span class="s">"{{_id}}[title]"</span><span class="nt">&gt;</span>{{c 'title' _id}}<span class="nt">&lt;/a&gt;</span>
+                <span class="nt">&lt;/li&gt;</span>
+            {{/if}}
+        {{/with}}
+    {{/each}}
+{{/with}}
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+<p><em>data-au-locale</em> attribute is special in a way that to that element cms binds a function that once you click it, it will set language. <code>{{id}}</code> that you pass to this attribute is used to fetch what language user has assigned to it, set it and reload translations.</p>
+
+<h3>
+<a name="how-to-create-plugins" class="anchor" href="#how-to-create-plugins"><span class="octicon octicon-link"></span></a>How to create plugins</h3>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/SteelzZ">SteelzZ</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
