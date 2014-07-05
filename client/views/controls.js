@@ -75,6 +75,10 @@ var controls = function(){
     $('#cmsinn_disable').on('click', function(event){
         CmsInn.disable();
     });
+
+    $('#cmsinn_dashboard').on('click', function(event){
+        Router.go('/dashboard');
+    });
     $(window).scroll(scroller)
     $(window).resize(scroller);
 }
