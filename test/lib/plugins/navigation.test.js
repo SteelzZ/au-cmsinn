@@ -11,6 +11,6 @@ if(Meteor.isClient){
 
         var pluginWrapper = $element.data('cmsInnNav');
         test.isNotNull(pluginWrapper);
-        test.isTrue(pluginWrapper.$element.hasClass('mark'));
+        test.isTrue(pluginWrapper.$element.hasClass('au-mark'));
     });
 }

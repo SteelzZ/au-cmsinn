@@ -8,7 +8,7 @@ if(Meteor.isClient){
         var pluginWrapper = $element.data('cmsInnLocale');
         test.isNotNull(pluginWrapper);
 
-        test.isTrue(pluginWrapper.$element.hasClass('mark'));
+        test.isTrue(pluginWrapper.$element.hasClass('au-mark'));
     });
 
     Tinytest.add('CmsInnLocale - Test if UI <render> method is called on mouseover', function (test) {

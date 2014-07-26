@@ -11,7 +11,7 @@ if(Meteor.isClient){
 
         var recordPluginWrapper = $recordElement.data('cmsInnRecord');
         test.isNotNull(recordPluginWrapper);
-        test.isTrue(recordPluginWrapper.$element.hasClass('mark'));
+        test.isTrue(recordPluginWrapper.$element.hasClass('au-mark'));
         test.isTrue(recordPluginWrapper.$element.hasClass('empty-record'));
     });
 
