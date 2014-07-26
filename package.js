@@ -49,6 +49,8 @@ Package.on_use(function (api, where) {
     api.add_files('lib/service.js', ['client', 'server']);
 
     api.export('CmsInn');
+    api.export('RemoteCollectionStorageAdapter', ['client', 'server'], {testOnly: true});
+    api.export('AuCmsInn', ['client', 'server'], {testOnly: true});
     api.export('Utilities', ['client', 'server'], {testOnly: true});
     api.export('CmsInnSortable', ['client', 'server'], {testOnly: true});
     api.export('CmsInnRecord', ['client', 'server'], {testOnly: true});
@@ -70,6 +72,7 @@ Package.on_test(function (api) {
 
     api.add_files('test/test_helpers.js', ['client', 'server']);
 
+    api.add_files('test/lib/service.test.js', ['client', 'server']);
     api.add_files('test/lib/utils.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/sortable.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/record.test.js', ['client', 'server']);
