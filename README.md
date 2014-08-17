@@ -2,7 +2,7 @@
 
 ## History
 
-###### 0.0.6 - In Development, unstable
+###### 0.0.9 - In Development, unstable
 
 ## About
 
@@ -259,5 +259,3 @@ Here is an example of language menu:
 ```
 
 *data-au-locale* attribute is special in a way that to that element cms binds a function that once you click it, it will set language. `{{id}}` that you pass to this attribute is used to fetch what language user has assigned to it, set it and reload translations.
-
-### How to create plugins
