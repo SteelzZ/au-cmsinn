@@ -14,8 +14,8 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating', 'roles'], ['client', 'server']);
-    api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap'], ['client']);
+    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'pfafman:bootstrap-3@3.2.0', 'chathuraa:x-editable-bootstrap@1.5.1'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
     api.add_files('lib/plugins/core.js', ['client', 'server']);
@@ -70,14 +70,14 @@ Package.on_use(function (api, where) {
 });
 
 Package.on_test(function (api) {
-    api.use('au-cmsinn', ['client', 'server']);
+    api.use('steelzz:au-cmsinn', ['client', 'server']);
 
-    api.use(['jquery', 'jquery-ui'], ['client']);
-    api.use(['mocha-web-sinon'], ['client', 'server']);
-    api.use('tinytest', ['client', 'server']);
-    api.use('test-helpers', ['client', 'server']);
-    api.use('accounts-base', ['client', 'server']);
-    api.use('accounts-password', ['client', 'server']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2'], ['client']);
+    api.use(['codeadventure:mocha-web-sinon@0.1.2'], ['client', 'server']);
+    api.use('tinytest@1.0.0', ['client', 'server']);
+    api.use('test-helpers@1.0.0', ['client', 'server']);
+    api.use('accounts-base@1.0.0', ['client', 'server']);
+    api.use('accounts-password@1.0.0', ['client', 'server']);
 
     api.add_files('test/test_helpers.js', ['client', 'server']);
 
