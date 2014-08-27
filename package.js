@@ -11,8 +11,8 @@ Npm.depends({
 });
 
 Package.on_use(function (api, where) {
-    api.imply(['iron-router']);
-    api.imply(['roles']);
+    api.imply(['iron:router']);
+    api.imply(['alanning:roles']);
 
     api.use(['underscore', 'ui', 'iron-router', 'deps', 'templating', 'roles'], ['client', 'server']);
     api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap'], ['client']);
