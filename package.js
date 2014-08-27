@@ -1,5 +1,9 @@
 Package.describe({
-  summary: "Practical, simple and yet powerfull CMS solution for meteor projects"
+  summary: "Practical, simple and yet powerfull CMS solution for meteor projects",
+  version: "0.0.10",
+  git: "https://github.com/SteelzZ/au-cmsinn.git",
+  homepage: "https://github.com/SteelzZ/au-cmsinn",
+  name: "steelzz:au-cmsinn"
 });
 
 Npm.depends({
@@ -14,6 +18,7 @@ Package.on_use(function (api, where) {
     api.use(['jquery', 'jquery-ui', 'bootstrap-3', 'x-editable-bootstrap'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
+    api.add_files('lib/plugins/core.js', ['client', 'server']);
 
     api.add_files('lib/utils.js', ['client', 'server']);
 
@@ -43,6 +48,7 @@ Package.on_use(function (api, where) {
     api.add_files('lib/plugins/deletable.js', ['client', 'server']);
     api.add_files('lib/plugins/navigation.js', ['client', 'server']);
     api.add_files('lib/plugins/versioning.js', ['client', 'server']);
+    api.add_files('lib/plugins/label.js', ['client', 'server']);
 
     api.add_files('lib/models/content.js', ['client', 'server']);
 
@@ -58,6 +64,9 @@ Package.on_use(function (api, where) {
     api.export('CmsInnLocale', ['client', 'server'], {testOnly: true});
     api.export('CmsInni18n', ['client', 'server'], {testOnly: true});
     api.export('CmsInnImage', ['client', 'server'], {testOnly: true});
+
+    // New architecture plugins
+    api.export('CmsInnLabel', ['client', 'server'], {testOnly: true});
 });
 
 Package.on_test(function (api) {
@@ -80,4 +89,5 @@ Package.on_test(function (api) {
     api.add_files('test/lib/plugins/locale.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/i18n.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/image.test.js', ['client', 'server']);
+    api.add_files('test/lib/plugins/label.test.js', ['client', 'server']);
 });
