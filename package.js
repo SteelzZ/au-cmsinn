@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Practical, simple and yet powerfull CMS solution for meteor projects",
-  version: "0.0.10",
+  version: "0.0.11",
   git: "https://github.com/SteelzZ/au-cmsinn.git",
   homepage: "https://github.com/SteelzZ/au-cmsinn",
   name: "steelzz:au-cmsinn"
@@ -73,7 +73,7 @@ Package.on_test(function (api) {
     api.use('steelzz:au-cmsinn', ['client', 'server']);
 
     api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2'], ['client']);
-    api.use(['codeadventure:mocha-web-sinon@0.1.2'], ['client', 'server']);
+    api.use(['steelzz:mocha-web-sinon@0.1.6'], ['client', 'server']);
     api.use('tinytest@1.0.0', ['client', 'server']);
     api.use('test-helpers@1.0.0', ['client', 'server']);
     api.use('accounts-base@1.0.0', ['client', 'server']);
