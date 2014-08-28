@@ -49,7 +49,7 @@ var controls = function(){
     $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});
 
     $('#cmsinn_translations').on('click', function(event){
-        CmsInn.toggle('i18n');
+        CmsInn.toggle('label');
     });
     $('#cmsinn_navigation').on('click', function(event){
         CmsInn.toggle('navigation');
@@ -87,7 +87,7 @@ Template['cmsinn_controls_left'].rendered = controls;
 
 Meteor.startup(function(){
     $('body').on('click', '[data-au-locale]', function(event){
-        CmsInn.plugins.i18n.setLocale($(event.currentTarget).attr('data-au-locale'));  
+        CmsInn.plugins.label.setLocale($(event.currentTarget).attr('data-au-locale'));
     });
 
     $('body').on('click', '[data-au-filter]', function(event){

@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Practical, simple and yet powerfull CMS solution for meteor projects",
-  version: "0.0.11",
+  version: "0.0.12",
   git: "https://github.com/SteelzZ/au-cmsinn.git",
   homepage: "https://github.com/SteelzZ/au-cmsinn",
   name: "steelzz:au-cmsinn"
@@ -14,7 +14,7 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
+    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'tracker@1.0.2-rc0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
     api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'pfafman:bootstrap-3@3.2.0', 'chathuraa:x-editable-bootstrap@1.5.1'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
@@ -42,7 +42,6 @@ Package.on_use(function (api, where) {
 
     api.add_files('lib/plugins/image.js', ['client', 'server']);
     api.add_files('lib/plugins/locale.js', ['client', 'server']);
-    api.add_files('lib/plugins/i18n.js', ['client', 'server']);
     api.add_files('lib/plugins/record.js', ['client', 'server']);
     api.add_files('lib/plugins/sortable.js', ['client', 'server']);
     api.add_files('lib/plugins/deletable.js', ['client', 'server']);
@@ -62,7 +61,6 @@ Package.on_use(function (api, where) {
     api.export('CmsInnRecord', ['client', 'server'], {testOnly: true});
     api.export('CmsInnNavigation', ['client', 'server'], {testOnly: true});
     api.export('CmsInnLocale', ['client', 'server'], {testOnly: true});
-    api.export('CmsInni18n', ['client', 'server'], {testOnly: true});
     api.export('CmsInnImage', ['client', 'server'], {testOnly: true});
 
     // New architecture plugins
@@ -87,7 +85,6 @@ Package.on_test(function (api) {
     api.add_files('test/lib/plugins/record.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/navigation.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/locale.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/i18n.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/image.test.js', ['client', 'server']);
     api.add_files('test/lib/plugins/label.test.js', ['client', 'server']);
 });
