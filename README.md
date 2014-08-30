@@ -2,7 +2,7 @@
 
 ## History
 
-###### 0.0.9 - In Development, unstable
+###### 0.0.12 - In Development, unstable
 
 ## About
 
@@ -10,10 +10,8 @@ This is a CMS package for Meteor. This CMS is a bit different in a sense that th
 
 ## Installation
 
-This package can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
-
 ``` sh
-$ mrt add au-cmsinn
+$ meteor add au-cmsinn
 ```
 
 ## Documentation - WORK IN PROGRESS
@@ -30,7 +28,7 @@ Current documentation is still very abstract but still, better than nothing. I a
  - [Adding navigation](#adding-navigation)
  - [Adding images](#adding-images)
  - [Adding record](#adding-records)
- - [Adding sortables and deletables](#adding-sortables-and-deletables)
+ - [Adding sortable and deletable](#adding-sortables-and-deletables)
  - [Adding languages](#adding-languages)
  - [How to create plugins](#how-to-create-plugins)
 
@@ -41,12 +39,12 @@ To make it easy to start with I have created a sample project that uses this pac
 
 Just create new meteor project:
 ``` sh
-$ mrt create my-cms-project
+$ meteor create my-cms-project
 ```
 
 and add this package:
 ``` sh
-$ mrt add au-ui-modern-business
+$ meteor add au-ui-modern-business
 ```
 
 And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts). 

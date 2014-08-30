@@ -1,5 +1,5 @@
 Package.describe({
-  summary: "Practical, simple and yet powerfull CMS solution for meteor projects",
+  summary: "Practical, simple and yet powerful CMS solution for meteor projects",
   version: "0.0.12",
   git: "https://github.com/SteelzZ/au-cmsinn.git",
   homepage: "https://github.com/SteelzZ/au-cmsinn",
