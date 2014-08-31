@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Practical, simple and yet powerful CMS solution for meteor projects",
-  version: "0.0.12",
+  version: "0.1.0",
   git: "https://github.com/SteelzZ/au-cmsinn.git",
   homepage: "https://github.com/SteelzZ/au-cmsinn",
   name: "steelzz:au-cmsinn"
@@ -14,8 +14,8 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'tracker@1.0.2-rc0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'pfafman:bootstrap-3@3.2.0', 'chathuraa:x-editable-bootstrap@1.5.1'], ['client']);
+    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'chathuraa:x-editable-bootstrap@1.5.1'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
     api.add_files('lib/plugins/core.js', ['client', 'server']);
@@ -25,7 +25,7 @@ Package.on_use(function (api, where) {
     api.add_files('lib/3rd/font-awesome.min.css', ['client']);
     api.add_files('client/css/font-awesome-override.css', ['client']);
 
-    api.add_files('assets/trash-icon.png', ['client']);
+    api.add_files('assets/trash-icon.png', ['client'], {isAsset: true});
 
     api.add_files('lib/3rd/wysiwyg-color.css', ['client']);
     api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.css', ['client']);

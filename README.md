@@ -11,7 +11,7 @@ This is a CMS package for Meteor. This CMS is a bit different in a sense that th
 ## Installation
 
 ``` sh
-$ meteor add au-cmsinn
+$ meteor add steelzz:au-cmsinn
 ```
 
 ## Documentation - WORK IN PROGRESS
@@ -44,7 +44,7 @@ $ meteor create my-cms-project
 
 and add this package:
 ``` sh
-$ meteor add au-ui-modern-business
+$ meteor add steelzz:au-ui-modern-business
 ```
 
 And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works [au-cmsinn intro](http://youtu.be/mJ83sGD33ts). 
