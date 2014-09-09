@@ -64,6 +64,27 @@ brew install imagemagick
 brew install graphicsmagick
 ```
 
+### Configuring au-cmsinn package
+
+If you have added just au-cmsinn package to your project and no preconfigured UI package, add `init.js` file in your project's root folder and add these lines:
+
+```
+if (Meteor.isClient) {
+    CmsInn.configure({
+        layoutTemplate: 'layout'
+    });
+}
+if (Meteor.isServer) {
+    CmsInn.configure({
+        plugins: {
+            versioning:{
+                insecure : true
+            }
+        }
+    }); 
+}
+```
+
 ### Adding CMS control panel
 
 First thing you need to do is to add "controls block" in your layout. To do that in your layout template add this:
