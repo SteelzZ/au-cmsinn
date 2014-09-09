@@ -2,7 +2,7 @@
 
 ## History
 
-###### 0.0.12 - In Development, unstable
+###### 0.1.0 - In Development, unstable
 
 ## About
 
@@ -23,6 +23,7 @@ Current documentation is still very abstract but still, better than nothing. I a
  - [Getting Started](#getting-started)
  - [Overview](#overview)
  - [Dependencies](#dependencies)
+ - [Configuring au-cmsinn package](#configuring-au-cmsinn-package)
  - [Adding CMS control panel](#adding-cms-control-panel)
  - [Adding labels](#adding-labels)
  - [Adding navigation](#adding-navigation)
@@ -66,7 +67,7 @@ brew install graphicsmagick
 
 ### Configuring au-cmsinn package
 
-If you have added just au-cmsinn package to your project and no preconfigured UI package, add `init.js` file in your project's root folder and add these lines:
+If you have added just au-cmsinn package to your project and no preconfigured UI package (like au-ui-modern-business), add `init.js` file in your project's root folder and add these lines:
 
 ```
 if (Meteor.isClient) {
