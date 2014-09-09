@@ -39,7 +39,7 @@
 <a name="history" class="anchor" href="#history"><span class="octicon octicon-link"></span></a>History</h2>
 
 <h6>
-<a name="009---in-development-unstable" class="anchor" href="#009---in-development-unstable"><span class="octicon octicon-link"></span></a>0.0.9 - In Development, unstable</h6>
+<a name="010---in-development-unstable" class="anchor" href="#010---in-development-unstable"><span class="octicon octicon-link"></span></a>0.1.0 - In Development, unstable</h6>
 
 <h2>
 <a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About</h2>
@@ -49,9 +49,7 @@
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>This package can be installed with <a href="https://github.com/oortcloud/meteorite/">Meteorite</a>. From inside a Meteorite-managed app:</p>
-
-<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt add au-cmsinn
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>meteor add steelzz:au-cmsinn
 </pre></div>
 
 <h2>
@@ -65,12 +63,13 @@
 <li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#configuring-au-cmsinn-package">Configuring au-cmsinn package</a></li>
 <li><a href="#adding-cms-control-panel">Adding CMS control panel</a></li>
 <li><a href="#adding-labels">Adding labels</a></li>
 <li><a href="#adding-navigation">Adding navigation</a></li>
 <li><a href="#adding-images">Adding images</a></li>
 <li><a href="#adding-records">Adding record</a></li>
-<li><a href="#adding-sortables-and-deletables">Adding sortables and deletables</a></li>
+<li><a href="#adding-sortables-and-deletables">Adding sortable and deletable</a></li>
 <li><a href="#adding-languages">Adding languages</a></li>
 <li><a href="#how-to-create-plugins">How to create plugins</a></li>
 </ul><h3>
@@ -80,12 +79,12 @@
 
 <p>Just create new meteor project:</p>
 
-<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt create my-cms-project
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>meteor create my-cms-project
 </pre></div>
 
 <p>and add this package:</p>
 
-<div class="highlight highlight-sh"><pre><span class="nv">$ </span>mrt add au-ui-modern-business
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>meteor add steelzz:au-ui-modern-business
 </pre></div>
 
 <p>And you are done. Once you will run your project you will be presented with a "Controls Panel" through which you will be able to manage content of your website. Here is a link where you can find a screencast that shows how all this works <a href="http://youtu.be/mJ83sGD33ts">au-cmsinn intro</a>. </p>
@@ -105,6 +104,27 @@
 <div class="highlight highlight-sh"><pre>brew install imagemagick
 brew install graphicsmagick
 </pre></div>
+
+<h3>
+<a name="configuring-au-cmsinn-package" class="anchor" href="#configuring-au-cmsinn-package"><span class="octicon octicon-link"></span></a>Configuring au-cmsinn package</h3>
+
+<p>If you have added just au-cmsinn package to your project and no preconfigured UI package (like au-ui-modern-business), add <code>init.js</code> file in your project's root folder and add these lines:</p>
+
+<pre><code>if (Meteor.isClient) {
+    CmsInn.configure({
+        layoutTemplate: 'layout'
+    });
+}
+if (Meteor.isServer) {
+    CmsInn.configure({
+        plugins: {
+            versioning:{
+                insecure : true
+            }
+        }
+    }); 
+}
+</code></pre>
 
 <h3>
 <a name="adding-cms-control-panel" class="anchor" href="#adding-cms-control-panel"><span class="octicon octicon-link"></span></a>Adding CMS control panel</h3>
